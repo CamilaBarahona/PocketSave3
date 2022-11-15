@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.camilaBarahona.pocketsave.db.DbUsuarios;
+
 public class Register extends AppCompatActivity {
     private Button btn_validar;
     private EditText ed_rut, ed_nombre, ed_apelPat, ed_apelMat, ed_direccion, ed_fechaNac, ed_email, ed_pass;
@@ -40,57 +42,29 @@ public class Register extends AppCompatActivity {
         btn_validar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                insertar();
-                /*
-                Toast.makeText(Register.this, "Usuario Creado con éxito", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(
-                        Register.this, Login.class
-                ));
+                DbUsuarios dbUsuarios = new DbUsuarios(Register.this);
+                dbUsuarios.insertarUsuario(ed_rut.getText().toString(),
+                        ed_nombre.getText().toString(),ed_apelPat.getText().toString(),
+                        ed_apelMat.getText().toString(),ed_fechaNac.getText().toString(),
+                        ed_direccion.getText().toString(), ed_email.getText().toString(),
+                        ed_pass.getText().toString());
 
-                 */
+                Toast.makeText(Register.this, "REGISTRO GUARDADO", Toast.LENGTH_SHORT).show();
+                limpiar();
+
             }
 
         });
     }
-
-    public void insertar() {
-        try {
-            String rut = ed_rut.getText().toString();
-            String name = ed_nombre.getText().toString();
-            String lastPatern = ed_apelPat.getText().toString();
-            String lastMatern = ed_apelMat.getText().toString();
-            String birthDate = ed_fechaNac.getText().toString();
-            String adress = ed_direccion.getText().toString();
-            String email = ed_email.getText().toString();
-            String password = ed_pass.getText().toString();
-
-            SQLiteDatabase db = openOrCreateDatabase("BD_POCKETSAVE", Context.MODE_PRIVATE, null);
-            db.execSQL("CREATE TABLE IF NOT EXISTS usuario(id INTEGER PRIMARY KEY AUTOINCREMENT, rut VARCHAR, name VARCHAR, lastPatern VARCHAR, lastMatern VARCHAR, birthDate VARCHAR, adress VARCHAR, email VARCHAR, password VARCHAR)");
-            String sql = "insert into usuario(rut,name,lastPatern,lastMatern,birthDate,adress,email,password)values(?,?,?,?,?,?,?,?)";
-            SQLiteStatement statement = db.compileStatement(sql);
-            statement.bindString(1,rut);
-            statement.bindString(2,name);
-            statement.bindString(3,lastPatern);
-            statement.bindString(4, lastMatern);
-            statement.bindString(5,birthDate);
-            statement.bindString(6,adress);
-            statement.bindString(7,email);
-            statement.bindString(8,password);
-            statement.execute();
-            Toast.makeText(this, "Usuario registrado con éxito en la base de datos", Toast.LENGTH_LONG).show();
-
-            ed_rut.setText("");
-            ed_nombre.setText("");
-            ed_apelPat.setText("");
-            ed_apelMat.setText("");
-            ed_direccion.setText("");
-            ed_fechaNac.setText("");
-            ed_email.setText("");
-            ed_pass.setText("");
-            ed_rut.requestFocus();
-        }
-        catch(Exception ex) {
-            Toast.makeText(this, "Error en el registro del usuario", Toast.LENGTH_LONG).show();
-        }
+    private  void limpiar(){
+        ed_rut.setText("");
+        ed_nombre.setText("");
+        ed_apelPat.setText("");
+        ed_apelMat.setText("");
+        ed_fechaNac.setText("");
+        ed_direccion.setText("");
+        ed_email.setText("");
+        ed_pass.setText("");
     }
+
 }

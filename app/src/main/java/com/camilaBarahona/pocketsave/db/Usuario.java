@@ -1,4 +1,4 @@
-package com.camilaBarahona.pocketsave.Database;
+package com.camilaBarahona.pocketsave.db;
 
 public class Usuario {
     protected String id;

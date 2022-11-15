@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.camilaBarahona.pocketsave.R;
 import com.camilaBarahona.pocketsave.menuHome.GastosFragment;
 import com.camilaBarahona.pocketsave.menuHome.HomeFragment;
+import com.camilaBarahona.pocketsave.menuHome.HomeMenu;
 
 public class AgregarMovimiento extends AppCompatActivity {
     Button btn_regresar, btn_guardarMovimiento;
@@ -57,7 +58,7 @@ public class AgregarMovimiento extends AppCompatActivity {
         btn_regresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( AgregarMovimiento.this, HomeFragment.class);
+                Intent intent = new Intent( AgregarMovimiento.this, HomeMenu.class);
                 startActivity(intent);
             }
         });

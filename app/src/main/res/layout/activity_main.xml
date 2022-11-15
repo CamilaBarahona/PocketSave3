@@ -7,15 +7,6 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,11 +23,11 @@
         android:id="@+id/btn_iniciarSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="136dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="24dp"
         android:text="Iniciar Sesión"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_sensores"
         app:layout_constraintEnd_toStartOf="@+id/btn_registrarse"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -46,22 +37,23 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="65dp"
-        android:layout_marginBottom="136dp"
+        android:layout_marginBottom="160dp"
         android:text="@string/textbtnregistrarse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/btn_iniciarSesion" />
 
     <Button
         android:id="@+id/btn_sensores"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="149dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginBottom="74dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="88dp"
         android:text="SENSORES"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_crearDB"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -107,4 +99,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tituloTextView" />
+
+    <Button
+        android:id="@+id/btn_crearDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="85dp"
+        android:layout_marginBottom="88dp"
+        android:text="Crear bbdd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_sensores" />
 </androidx.constraintlayout.widget.ConstraintLayout>

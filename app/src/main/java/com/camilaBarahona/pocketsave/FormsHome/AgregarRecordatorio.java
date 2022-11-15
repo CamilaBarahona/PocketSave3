@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.camilaBarahona.pocketsave.R;
 import com.camilaBarahona.pocketsave.menuHome.HomeFragment;
+import com.camilaBarahona.pocketsave.menuHome.HomeMenu;
 
 public class AgregarRecordatorio extends AppCompatActivity {
     Button btn_guardar, btn_regresar;
@@ -80,7 +81,7 @@ public class AgregarRecordatorio extends AppCompatActivity {
         btn_regresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( AgregarRecordatorio.this, HomeFragment.class);
+                Intent intent = new Intent( AgregarRecordatorio.this, HomeMenu.class);
                 startActivity(intent);
             }
         });
