@@ -26,6 +26,7 @@ public class GastosFragment extends Fragment {
     private final static int rView = R.layout.fragment_gastos;
     View view;
     FloatingActionButton btn_agregarGasto;
+
     public GastosFragment() {
     }
 

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "250816569377",
+    "project_id": "pocketsave-454cd",
+    "storage_bucket": "pocketsave-454cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:250816569377:android:2024d81a5caf26056f4360",
+        "android_client_info": {
+          "package_name": "com.camilaBarahona.pocketsave"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "250816569377-ffus7qqh28rj8kp03jhjvh4n25sdq0sv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAiTG8MFcunUv9Ar0an8yUx92ZzT4vq2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "250816569377-ffus7qqh28rj8kp03jhjvh4n25sdq0sv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

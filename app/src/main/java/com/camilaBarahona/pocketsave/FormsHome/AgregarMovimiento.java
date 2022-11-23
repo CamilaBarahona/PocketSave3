@@ -13,13 +13,19 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.camilaBarahona.pocketsave.R;
+import com.camilaBarahona.pocketsave.Register;
+import com.camilaBarahona.pocketsave.db.DbGastos;
+import com.camilaBarahona.pocketsave.db.DbRecordatorios;
 import com.camilaBarahona.pocketsave.menuHome.GastosFragment;
 import com.camilaBarahona.pocketsave.menuHome.HomeFragment;
 import com.camilaBarahona.pocketsave.menuHome.HomeMenu;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class AgregarMovimiento extends AppCompatActivity {
     Button btn_regresar, btn_guardarMovimiento;
     Spinner lista;
+    TextInputEditText input_cat, input_monto, input_fecha;
+
     String datos[] = {"Seleccionar tipo de Movimiento","Ingreso", "Egreso"};
     ArrayAdapter arrayAdapter;
     @SuppressLint("MissingInflatedId")
@@ -31,6 +37,12 @@ public class AgregarMovimiento extends AppCompatActivity {
         btn_guardarMovimiento = (Button) findViewById(R.id.btn_guardarMovimiento);
         btn_regresar = (Button) findViewById(R.id.btn_regresar);
 
+        //Inicialización de los inputTexts
+        input_cat = (TextInputEditText) findViewById(R.id.input_cat);
+        input_monto = (TextInputEditText) findViewById(R.id.input_monto);
+        input_fecha = (TextInputEditText) findViewById(R.id.input_fecha);
+
+        //Inicialización del spinner
         lista = (Spinner) findViewById(R.id.listaMov);
         arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, datos);
         lista.setAdapter(arrayAdapter);
@@ -62,5 +74,31 @@ public class AgregarMovimiento extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btn_guardarMovimiento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DbGastos dbGastos = new DbGastos(AgregarMovimiento.this);
+                long id = dbGastos.insertarGasto(
+                        lista.toString(),
+                        input_cat.getText().toString(),
+                        Integer.parseInt(input_monto.getText().toString()),
+                        input_fecha.getText().toString()
+                );
+
+                if (id > 0) {
+                    Toast.makeText(AgregarMovimiento.this, "MOVIMIENTO GUARDADO", Toast.LENGTH_SHORT).show();
+                    limpiar();
+                } else {
+                    Toast.makeText(AgregarMovimiento.this, "ERROR AL GUARDAR MOVIMIENTO", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    private void limpiar() {
+        input_cat.setText("");
+        input_monto.setText("");
+        input_fecha.setText("");
     }
 }

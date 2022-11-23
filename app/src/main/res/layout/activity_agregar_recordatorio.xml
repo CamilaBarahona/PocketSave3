@@ -45,14 +45,14 @@
         android:layout_marginBottom="15dp"
         android:text="Título Recordatorio"
         android:textSize="@dimen/text_item_size"
-        app:layout_constraintBottom_toTopOf="@+id/textInputEditText"
+        app:layout_constraintBottom_toTopOf="@+id/tituloRecordatorio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText"
+        android:id="@+id/tituloRecordatorio"
         android:layout_width="357dp"
         android:layout_height="48dp"
         android:layout_marginStart="27dp"
@@ -64,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText2"
+        android:id="@+id/cuerpoRecordatorio"
         android:layout_width="360dp"
         android:layout_height="56dp"
         android:layout_marginStart="25dp"
@@ -73,7 +73,7 @@
         android:hint="Escriba su recordatorio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/tituloRecordatorio" />
 
 
     <TextView
@@ -87,10 +87,10 @@
         android:textSize="@dimen/text_item_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText2" />
+        app:layout_constraintTop_toBottomOf="@+id/cuerpoRecordatorio" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText3"
+        android:id="@+id/fechaRecordatorio"
         android:layout_width="355dp"
         android:layout_height="48dp"
         android:layout_marginStart="26dp"
@@ -113,7 +113,7 @@
         android:textSize="@dimen/text_item_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText3" />
+        app:layout_constraintTop_toBottomOf="@+id/fechaRecordatorio" />
 
     <Spinner
         android:id="@+id/listaHoras"

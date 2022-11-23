@@ -14,11 +14,14 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.camilaBarahona.pocketsave.db.DbUsuarios;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
     private Button btn_validar;
     private EditText ed_rut, ed_nombre, ed_apelPat, ed_apelMat, ed_direccion, ed_fechaNac, ed_email, ed_pass;
     private RadioGroup rb_genero;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -43,15 +46,18 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DbUsuarios dbUsuarios = new DbUsuarios(Register.this);
-                dbUsuarios.insertarUsuario(ed_rut.getText().toString(),
-                        ed_nombre.getText().toString(),ed_apelPat.getText().toString(),
+                long id = dbUsuarios.insertarUsuario(ed_rut.getText().toString(),
+                       ed_nombre.getText().toString(),ed_apelPat.getText().toString(),
                         ed_apelMat.getText().toString(),ed_fechaNac.getText().toString(),
                         ed_direccion.getText().toString(), ed_email.getText().toString(),
                         ed_pass.getText().toString());
 
-                Toast.makeText(Register.this, "REGISTRO GUARDADO", Toast.LENGTH_SHORT).show();
-                limpiar();
-
+                if (id > 0) {
+                    Toast.makeText(Register.this, "REGISTRO GUARDADO", Toast.LENGTH_SHORT).show();
+                    limpiar();
+                } else {
+                    Toast.makeText(Register.this, "ERROR AL GUARDAR REGISTRO", Toast.LENGTH_SHORT).show();
+                }
             }
 
         });

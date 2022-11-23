@@ -10,8 +10,8 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NOMBRE = "pocketSave.db";
     protected static final String TABLE_USUARIOS = "t_usuarios";
-    private static final String TABLE_GASTOS = "t_gastos";
-    private static final String TABLE_RECORDATORIOS = "t_recordatorios";
+    protected static final String TABLE_GASTOS = "t_gastos";
+    protected static final String TABLE_RECORDATORIOS = "t_recordatorios";
 
     public DbHelper(@Nullable Context context) {
         super(context, DATABASE_NOMBRE, null, DATABASE_VERSION);
