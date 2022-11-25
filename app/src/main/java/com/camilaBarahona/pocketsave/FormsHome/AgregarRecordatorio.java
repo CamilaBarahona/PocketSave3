@@ -1,7 +1,5 @@
 package com.camilaBarahona.pocketsave.FormsHome;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,10 +10,10 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.camilaBarahona.pocketsave.R;
-import com.camilaBarahona.pocketsave.Register;
 import com.camilaBarahona.pocketsave.db.DbRecordatorios;
-import com.camilaBarahona.pocketsave.menuHome.HomeFragment;
 import com.camilaBarahona.pocketsave.menuHome.HomeMenu;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -23,8 +21,9 @@ public class AgregarRecordatorio extends AppCompatActivity {
     Button btn_guardar, btn_regresar;
     TextInputEditText tituloRecordatorio, cuerpoRecordatorio, fechaRecordatorio;
     Spinner listaHoras;
-    String datosHora[] = {"00:00", "01:00", "02:00", "03:00", "04:00","05:00", "06:00","07:00", "08:00"};
+    String datosHora[] = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"};
     ArrayAdapter adapter;
+    String spinnerValue;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -40,10 +39,10 @@ public class AgregarRecordatorio extends AppCompatActivity {
         tituloRecordatorio = (TextInputEditText) findViewById(R.id.tituloRecordatorio);
         cuerpoRecordatorio = (TextInputEditText) findViewById(R.id.cuerpoRecordatorio);
         fechaRecordatorio = (TextInputEditText) findViewById(R.id.fechaRecordatorio);
-
+        this.spinnerValue = "";
         //Inicialización de Spinner
         listaHoras = (Spinner) findViewById(R.id.listaHoras);
-        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,datosHora);
+        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, datosHora);
         listaHoras.setAdapter(adapter);
 
         //Metodo para definir las opciones seleccionadas.
@@ -78,6 +77,55 @@ public class AgregarRecordatorio extends AppCompatActivity {
                     case 8:
                         Toast.makeText(AgregarRecordatorio.this, datosHora[position], Toast.LENGTH_SHORT).show();
                         break;
+                    case 9:
+                        Toast.makeText(AgregarRecordatorio.this, datosHora[position], Toast.LENGTH_SHORT).show();
+                        break;
+                    case 10:
+                        Toast.makeText(AgregarRecordatorio.this, datosHora[position], Toast.LENGTH_SHORT).show();
+                        break;
+                    case 11:
+                        Toast.makeText(AgregarRecordatorio.this, datosHora[position], Toast.LENGTH_SHORT).show();
+                        break;
+                    case 12:
+                        Toast.makeText(AgregarRecordatorio.this, datosHora[position], Toast.LENGTH_SHORT).show();
+                        break;
+                    case 13:
+                        Toast.makeText(AgregarRecordatorio.this, datosHora[position], Toast.LENGTH_SHORT).show();
+                        break;
+                    case 14:
+                        Toast.makeText(AgregarRecordatorio.this, datosHora[position], Toast.LENGTH_SHORT).show();
+                        break;
+                    case 15:
+                        Toast.makeText(AgregarRecordatorio.this, datosHora[position], Toast.LENGTH_SHORT).show();
+                        break;
+                    case 16:
+                        Toast.makeText(AgregarRecordatorio.this, datosHora[position], Toast.LENGTH_SHORT).show();
+                        break;
+                    case 17:
+                        Toast.makeText(AgregarRecordatorio.this, datosHora[position], Toast.LENGTH_SHORT).show();
+                        break;
+                    case 18:
+                        Toast.makeText(AgregarRecordatorio.this, datosHora[position], Toast.LENGTH_SHORT).show();
+                        break;
+                    case 19:
+                        Toast.makeText(AgregarRecordatorio.this, datosHora[position], Toast.LENGTH_SHORT).show();
+                        break;
+                    case 20:
+                        Toast.makeText(AgregarRecordatorio.this, datosHora[position], Toast.LENGTH_SHORT).show();
+                        break;
+                    case 21:
+                        Toast.makeText(AgregarRecordatorio.this, datosHora[position], Toast.LENGTH_SHORT).show();
+                        break;
+                    case 22:
+                        Toast.makeText(AgregarRecordatorio.this, datosHora[position], Toast.LENGTH_SHORT).show();
+                        break;
+                    case 23:
+                        Toast.makeText(AgregarRecordatorio.this, datosHora[position], Toast.LENGTH_SHORT).show();
+                        break;
+                    case 24:
+                        Toast.makeText(AgregarRecordatorio.this, datosHora[position], Toast.LENGTH_SHORT).show();
+                        break;
+
                 }
             }
 
@@ -91,7 +139,7 @@ public class AgregarRecordatorio extends AppCompatActivity {
         btn_regresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( AgregarRecordatorio.this, HomeMenu.class);
+                Intent intent = new Intent(AgregarRecordatorio.this, HomeMenu.class);
                 startActivity(intent);
             }
         });
@@ -104,7 +152,7 @@ public class AgregarRecordatorio extends AppCompatActivity {
                         tituloRecordatorio.getText().toString(),
                         cuerpoRecordatorio.getText().toString(),
                         fechaRecordatorio.getText().toString(),
-                        listaHoras.toString()
+                        listaHoras.getSelectedItem().toString()
                 );
 
                 if (id > 0) {
@@ -121,5 +169,6 @@ public class AgregarRecordatorio extends AppCompatActivity {
         tituloRecordatorio.setText("");
         cuerpoRecordatorio.setText("");
         fechaRecordatorio.setText("");
+        listaHoras.setSelection(0);
     }
 }

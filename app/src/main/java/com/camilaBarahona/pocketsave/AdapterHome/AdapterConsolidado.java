@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,20 +13,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.camilaBarahona.pocketsave.Entidades.Consolidado;
 import com.camilaBarahona.pocketsave.R;
+import com.camilaBarahona.pocketsave.db.Gasto;
 
 import java.util.ArrayList;
 
-public class AdapterConsolidado extends RecyclerView.Adapter<AdapterConsolidado.ViewHolder> implements View.OnClickListener {
+public class AdapterConsolidado extends RecyclerView.Adapter<AdapterConsolidado.ViewHolder> {
     LayoutInflater inflater;
     Context context;
-    ArrayList<Consolidado> consolidadoArrayList;
+    ArrayList<Gasto> listaGastos;
 
     //Listener
     private View.OnClickListener listener;
 
-    public AdapterConsolidado(Context context, ArrayList<Consolidado> data) {
+    public AdapterConsolidado(Context context, ArrayList<Gasto> listaGastos) {
         this.context = context;
-        this.consolidadoArrayList = data;
+        this.listaGastos = listaGastos;
         this.inflater = LayoutInflater.from(context);
     }
 
@@ -33,7 +35,6 @@ public class AdapterConsolidado extends RecyclerView.Adapter<AdapterConsolidado.
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = inflater.inflate(R.layout.card_gastos, parent, false);
-        v.setOnClickListener(this);
         return new ViewHolder(v);
     }
 
@@ -42,32 +43,25 @@ public class AdapterConsolidado extends RecyclerView.Adapter<AdapterConsolidado.
     }
 
     @Override
-
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Consolidado consolidado = consolidadoArrayList.get(position);
-        holder.movimiento.setText(consolidado.getMovimiento());
-        holder.fecha.setText(consolidado.getFecha());
-        holder.categoria.setText(consolidado.getCategoría());
-        holder.valor.setText(consolidado.getValor());
-        holder.image.setImageResource(consolidado.getImageId());
 
-    }
+        holder.movimiento.setText(listaGastos.get(position).getTipo_movimiento());
+        holder.categoria.setText(listaGastos.get(position).getCategoria_movimiento());
+        holder.valor.setText(listaGastos.get(position).getMonto());
+        holder.fecha.setText(listaGastos.get(position).getFecha());
+
+        }
 
     @Override
     public int getItemCount() {
-        return consolidadoArrayList.size();
+        return listaGastos.size();
     }
 
-    @Override
-    public void onClick(View view) {
-        if (listener != null) {
-            listener.onClick(view);
-        }
-    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView movimiento, fecha, categoria, valor;
         ImageView image;
+        Button btn_editar, btn_eliminar;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -75,7 +69,9 @@ public class AdapterConsolidado extends RecyclerView.Adapter<AdapterConsolidado.
             fecha = itemView.findViewById(R.id.tvFecha);
             categoria = itemView.findViewById(R.id.tvCategoria);
             valor = itemView.findViewById(R.id.tvValor);
-            image = itemView.findViewById(R.id.imagenConsolidado);
+
+            btn_editar = itemView.findViewById(R.id.btn_editarGasto);
+            btn_eliminar = itemView.findViewById(R.id.btn_eliminarGasto);
         }
     }
 }

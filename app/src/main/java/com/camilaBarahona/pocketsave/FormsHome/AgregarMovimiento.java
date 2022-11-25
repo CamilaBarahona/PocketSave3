@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,7 +26,7 @@ public class AgregarMovimiento extends AppCompatActivity {
     Button btn_regresar, btn_guardarMovimiento;
     Spinner lista;
     TextInputEditText input_cat, input_monto, input_fecha;
-
+    ImageView img;
     String datos[] = {"Seleccionar tipo de Movimiento","Ingreso", "Egreso"};
     ArrayAdapter arrayAdapter;
     @SuppressLint("MissingInflatedId")
@@ -42,6 +43,8 @@ public class AgregarMovimiento extends AppCompatActivity {
         input_monto = (TextInputEditText) findViewById(R.id.input_monto);
         input_fecha = (TextInputEditText) findViewById(R.id.input_fecha);
 
+        //Inicialización del ImageView
+        img = (ImageView) findViewById(R.id.img);
         //Inicialización del spinner
         lista = (Spinner) findViewById(R.id.listaMov);
         arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, datos);
@@ -78,9 +81,15 @@ public class AgregarMovimiento extends AppCompatActivity {
         btn_guardarMovimiento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int imgs = 0;
                 DbGastos dbGastos = new DbGastos(AgregarMovimiento.this);
+                if (lista.getSelectedItem().toString() == "egreso") {
+                    imgs = 700013;
+                } else {
+                    imgs = 700006;
+                }
                 long id = dbGastos.insertarGasto(
-                        lista.toString(),
+                        lista.getSelectedItem().toString(),
                         input_cat.getText().toString(),
                         Integer.parseInt(input_monto.getText().toString()),
                         input_fecha.getText().toString()
@@ -100,5 +109,6 @@ public class AgregarMovimiento extends AppCompatActivity {
         input_cat.setText("");
         input_monto.setText("");
         input_fecha.setText("");
+        lista.setSelection(0);
     }
 }

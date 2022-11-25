@@ -12,12 +12,11 @@ public class Consolidado {
 
     }
 
-    public Consolidado(String movimiento, String fecha, String categoría, String valor, int imageId) {
+    public Consolidado(String movimiento, String fecha, String categoría, String valor) {
         this.movimiento = movimiento;
         this.fecha = fecha;
         this.categoría = categoría;
         this.valor = valor;
-        this.imageId = imageId;
     }
 
     public String getMovimiento() {

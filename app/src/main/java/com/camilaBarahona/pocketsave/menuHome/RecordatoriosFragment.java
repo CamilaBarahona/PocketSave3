@@ -14,9 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.camilaBarahona.pocketsave.AdapterHome.AdapterRecordatorio;
-import com.camilaBarahona.pocketsave.Entidades.Recordatorio;
 import com.camilaBarahona.pocketsave.FormsHome.AgregarRecordatorio;
 import com.camilaBarahona.pocketsave.R;
+import com.camilaBarahona.pocketsave.db.DbRecordatorios;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -25,6 +25,7 @@ public class RecordatoriosFragment extends Fragment {
     private final static int rView = R.layout.fragment_recordatorios;
     View vista;
     FloatingActionButton btn_agregarRecordatorio;
+    ArrayList<com.camilaBarahona.pocketsave.db.Recordatorio> recordatorioArraylist;
 
     public RecordatoriosFragment() {
     }
@@ -54,22 +55,14 @@ public class RecordatoriosFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View vista, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(vista, savedInstanceState);
-        ArrayList<Recordatorio> data = dataInitialize();
         RecyclerView recyclerView = vista.findViewById(R.id.recyclerViewRecordatorios);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
-        AdapterRecordatorio adapterRecordatorio = new AdapterRecordatorio(getContext(), data);
+        DbRecordatorios dbRecordatorios = new DbRecordatorios(getContext());
+        recordatorioArraylist = new ArrayList<>();
+        AdapterRecordatorio adapterRecordatorio = new AdapterRecordatorio( getContext(), dbRecordatorios.mostrarRecordatorio());
         recyclerView.setAdapter(adapterRecordatorio);
-        adapterRecordatorio.notifyDataSetChanged();
-    }
-    private ArrayList<Recordatorio> dataInitialize() {
-        ArrayList<Recordatorio> recordatorioArrayList = new ArrayList<>();
-        recordatorioArrayList.add(new Recordatorio("Cobrar dinero","Le presté $35.000 a Juanita, debo cobrarlo","21/11/2022","17:00"));
-        recordatorioArrayList.add(new Recordatorio("Entradas","Comprar entradas en puntoticket par Ricky Martin","10/11/2022","00:00"));
-        recordatorioArrayList.add(new Recordatorio("Prestamo","Vence prestamo Banco Estado, pagar","27/10/2022","09:00"));
-        recordatorioArrayList.add(new Recordatorio("Pagar Instituto","Pagar cuota instituto &167.400","23/10/2022","09:00"));
-        return recordatorioArrayList;
-    }
 
 
+    }
 }

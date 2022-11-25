@@ -11,28 +11,28 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.camilaBarahona.pocketsave.Entidades.Recordatorio;
 import com.camilaBarahona.pocketsave.R;
+import com.camilaBarahona.pocketsave.db.Recordatorio;
 
 import java.util.ArrayList;
 
-public class AdapterRecordatorio extends RecyclerView.Adapter<AdapterRecordatorio.ViewHolder> implements View.OnClickListener {
+public class AdapterRecordatorio extends RecyclerView.Adapter<AdapterRecordatorio.ViewHolder>  {
     LayoutInflater inflater;
     Context context;
-    ArrayList<Recordatorio> recordatorioArrayList;
+    ArrayList<com.camilaBarahona.pocketsave.db.Recordatorio> listaRecordatorios;
+
 
     //Listener
     private View.OnClickListener listener;
 
-    public AdapterRecordatorio(Context context, ArrayList<Recordatorio> data) {
+    public AdapterRecordatorio(Context context, ArrayList<Recordatorio> listaRecordatorios) {
         this.context = context;
-        this.recordatorioArrayList = data;
+        this.listaRecordatorios = listaRecordatorios;
         this.inflater = LayoutInflater.from(context);
     }
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.card_recordatorios, parent, false);
-        view.setOnClickListener(this);
         return new ViewHolder(view);
     }
    public void setOnClicListener(View.OnClickListener listener) {
@@ -40,24 +40,17 @@ public class AdapterRecordatorio extends RecyclerView.Adapter<AdapterRecordatori
    }
    @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Recordatorio recordatorio = recordatorioArrayList.get(position);
-        holder.titulo.setText(recordatorio.getTitulo());
-        holder.cuerpo.setText(recordatorio.getCuerpo());
-        holder.fecha.setText(recordatorio.getFecha());
-        holder.hora.setText(recordatorio.getHora());
+        holder.titulo.setText(listaRecordatorios.get(position).getTitulo());
+        holder.cuerpo.setText(listaRecordatorios.get(position).getCuerpo());
+        holder.fecha.setText(listaRecordatorios.get(position).getFecha());
+        holder.hora.setText(listaRecordatorios.get(position).getHora());
    }
 
    @Override
    public int getItemCount(){
-        return recordatorioArrayList.size();
+        return listaRecordatorios.size();
    }
 
-   @Override
-   public void onClick(View view) {
-        if (listener != null){
-            listener.onClick(view);
-        }
-   }
 
    public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView titulo, cuerpo, fecha, hora;
