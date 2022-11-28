@@ -12,5 +12,9 @@
         android:id="@+id/recordatorios"
         android:icon="@drawable/notificacion"
         android:title="@string/item_title_recordatorios" />
+    <item
+        android:id="@+id/cerrarSesion"
+        android:icon="@drawable/logout"
+        android:title="@string/CerrarSesion" />
 
 </menu>

@@ -1,16 +1,11 @@
 package com.camilaBarahona.pocketsave.menuHome;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -18,13 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.camilaBarahona.pocketsave.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -46,12 +35,14 @@ public class HomeMenu extends AppCompatActivity implements NavigationView.OnNavi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_menu);
+        this.setTitle("Menú Principal");
         viewPager = (ViewPager) findViewById(R.id.vp_horizontal);
         viewPager.setOffscreenPageLimit(100);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new HomeFragment());
         adapter.addFragment(new GastosFragment());
         adapter.addFragment(new RecordatoriosFragment());
+        adapter.addFragment(new LogoutFragment());
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);
         bottomBar = findViewById(R.id.bottom_navigation_id);
@@ -70,6 +61,9 @@ public class HomeMenu extends AppCompatActivity implements NavigationView.OnNavi
                             case R.id.recordatorios:
                                 viewPager.setCurrentItem(2);
                                 break;
+                            case R.id.cerrarSesion:
+                                    viewPager.setCurrentItem(3);
+                                    break;
                         }
                         return false;
                     }

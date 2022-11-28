@@ -15,12 +15,17 @@
     <uses-feature
         android:name="android.hardware.fingerprint"
         android:required="true" />
+    <uses-feature
+        android:name="android:enableOnBackInvokedCallback"
+        android:required="true"
+        />
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/loguito"
+        android:usesCleartextTraffic="true"
         android:label="@string/app_name"
         android:roundIcon="@drawable/loguito"
         android:supportsRtl="true"
@@ -41,7 +46,6 @@
                 android:value="" />
         </activity>
         <!--
-
              To get one, follow the directions here:
 
                 https://developers.google.com/maps/documentation/android-sdk/get-api-key
@@ -92,8 +96,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-
         <activity
             android:name=".Register"
             android:exported="false">
@@ -130,6 +132,9 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
     </application>
+
+
 
 </manifest>

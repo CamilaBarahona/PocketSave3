@@ -21,5 +21,12 @@
         android:layout_below="@id/bottom_navigation_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="" />
+        app:layout_behavior="" >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/CerrarSesion" />
+    </androidx.viewpager.widget.ViewPager>
+
 </RelativeLayout>

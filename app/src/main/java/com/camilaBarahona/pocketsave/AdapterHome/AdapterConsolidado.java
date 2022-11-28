@@ -4,14 +4,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.camilaBarahona.pocketsave.Entidades.Consolidado;
 import com.camilaBarahona.pocketsave.R;
 import com.camilaBarahona.pocketsave.db.Gasto;
 
@@ -61,7 +59,7 @@ public class AdapterConsolidado extends RecyclerView.Adapter<AdapterConsolidado.
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView movimiento, fecha, categoria, valor;
         ImageView image;
-        Button btn_editar, btn_eliminar;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,9 +67,6 @@ public class AdapterConsolidado extends RecyclerView.Adapter<AdapterConsolidado.
             fecha = itemView.findViewById(R.id.tvFecha);
             categoria = itemView.findViewById(R.id.tvCategoria);
             valor = itemView.findViewById(R.id.tvValor);
-
-            btn_editar = itemView.findViewById(R.id.btn_editarGasto);
-            btn_eliminar = itemView.findViewById(R.id.btn_eliminarGasto);
         }
     }
 }

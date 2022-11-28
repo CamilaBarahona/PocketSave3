@@ -46,8 +46,8 @@
 
         <TextView
             android:id="@+id/tvCuerpo"
-            android:layout_width="367dp"
-            android:layout_height="86dp"
+            android:layout_width="366dp"
+            android:layout_height="51dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:text="@string/loremIpsum"
@@ -115,31 +115,6 @@
             android:textStyle="normal"
             app:layout_constraintStart_toEndOf="@+id/tvTitleHora"
             app:layout_constraintTop_toBottomOf="@+id/tvFecha" />
-
-        <Button
-            android:id="@+id/btn_editarRecordatorio"
-            android:layout_width="183dp"
-            android:layout_height="46dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="10dp"
-            android:text="editar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitleHora"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <Button
-            android:id="@+id/btn_eliminarRecordatorio"
-            android:layout_width="160dp"
-            android:layout_height="47dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="10dp"
-            android:text="eliminar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_editarRecordatorio" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -63,8 +63,6 @@ public class AdapterRecordatorio extends RecyclerView.Adapter<AdapterRecordatori
             fecha = itemView.findViewById(R.id.tvFecha);
             hora = itemView.findViewById(R.id.tvHora);
 
-            btn_editar = itemView.findViewById(R.id.btn_editarRecordatorio);
-            btn_eliminar = itemView.findViewById(R.id.btn_eliminarRecordatorio);
         }
    }
 }
